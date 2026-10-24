@@ -91,7 +91,9 @@ The phone is displayed as `+234 814 805 7035`; its clickable link uses `tel:+234
 
 The form opens a `mailto:` draft with the visitor's name, email and message. The visitor must send it from their email app. The site does not submit, store or send the message. If no mail app is configured, the direct email link is the fallback.
 
-To connect Formspree later, create your own endpoint, replace the form action with that endpoint and set method to POST. Remove the current `contact-form` submit handler from `script.js`, keep the existing `name` attributes (name, email, body), and replace the explanatory copy. Test the endpoint and display a real result before claiming that a message was sent. Do not put API secrets in a static repository.
+Keep the HTML form's `action` unset. JavaScript opens the email draft after validation; a `mailto:` form action can make Chrome flag an otherwise HTTPS page as not fully secure. The draft button is enabled only once its JavaScript handler is ready. Without JavaScript, use the direct email link. Ordinary `mailto:` links can stay in place.
+
+To connect Formspree later, create your own endpoint, set the form action to that HTTPS endpoint and set method to POST. Remove the current `contact-form` submit handler from `script.js` and the submit button’s initial `disabled` attribute, keep the existing `name` attributes (name, email, body), and replace the explanatory copy. Test the endpoint and display a real result before claiming that a message was sent. Do not put API secrets in a static repository.
 
 ## Custom domain later
 

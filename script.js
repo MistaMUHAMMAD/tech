@@ -60,6 +60,9 @@ if (form) {
     window.location.href = mailto;
     document.querySelector("#form-status").textContent = "Email draft requested. If your email app did not open, email muhammad.musa4rl@gmail.com directly. No message has been sent by this site.";
   });
+  // Enable only after the local draft handler is ready. A mailto form action
+  // is classified by Chrome as an insecure form target on HTTPS pages.
+  form.querySelector('button[type="submit"]').disabled = false;
 }
 
 const filters = document.querySelector(".filter-bar");

@@ -7,7 +7,7 @@ import json, sys, re
 
 ROOT=Path(__file__).resolve().parents[1]
 class Page(HTMLParser):
- def __init__(self):super().__init__();self.refs=[];self.ids=[];self.h1=0;self.labels=set();self.fields=[];self.images=[]
+ def __init__(self):super().__init__();self.refs=[];self.ids=[];self.h1=0;self.labels=set();self.fields=[];self.images=[];self.form_actions=[]
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
   if 'id' in a:self.ids.append(a['id'])
@@ -17,6 +17,8 @@ class Page(HTMLParser):
   if tag=='label' and a.get('for'):self.labels.add(a['for'])
   if tag in ['input','textarea']:self.fields.append(a.get('id'))
   if tag=='img':self.images.append(a)
+  if tag=='form':self.form_actions.append(a.get('action',''))
+  if a.get('formaction'):self.form_actions.append(a['formaction'])
 
 pages={};errors=[];warnings=[]
 for f in ROOT.glob('*.html'):
@@ -27,6 +29,9 @@ for f in ROOT.glob('*.html'):
   if field not in page.labels:errors.append(f'{f.name}: missing label for {field}')
  for image in page.images:
   if 'alt' not in image:errors.append(f'{f.name}: image without alt text')
+ for action in page.form_actions:
+  if urlsplit(action).scheme.lower() in {'http','mailto'}:
+   errors.append(f'{f.name}: insecure form target can trigger a Chrome warning: {action}')
 for filename,page in pages.items():
  for ref in page.refs:
   parts=urlsplit(ref)
