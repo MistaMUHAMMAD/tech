@@ -1,0 +1,4 @@
+Ticket number,User,Issue category,Severity,Status,Assigned technician,Opened at,Closed at,Closure hours,Resolution / next action
+DEMO-TKT-001,Demo user 01,Peripheral,Low,Closed,Demo technician,2026-10-20T09:00:00,2026-10-20T10:30:00,1.5,Fictional example: approved printer queue restored and tested
+DEMO-TKT-002,Demo user 02,Connectivity,Medium,In progress,Demo technician,2026-10-21T10:00:00,,,Fictional example: network checks in progress
+DEMO-TKT-003,Demo user 03,Access,Medium,Escalated,Demo technician,2026-10-22T11:00:00,,,Fictional example: awaiting approved account review

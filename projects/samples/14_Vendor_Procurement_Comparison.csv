@@ -1,0 +1,4 @@
+Item,Vendor reference,Quantity,Unit cost (NGN),Delivery (NGN),Tax (NGN),Total cost (NGN),Warranty months,Lead time days,Meets specification,Support terms,Decision / notes
+Demo laptop specification,Demo vendor A,2,100000,5000,15000,220000,12,5,Yes,Demo warranty terms,Illustrative comparison only
+Demo laptop specification,Demo vendor B,2,95000,10000,14000,214000,6,10,Partial,Demo carry-in support,Clarify missing specification
+Demo laptop specification,Demo vendor C,2,110000,0,16000,236000,18,3,Yes,Demo service terms,Illustrative comparison only

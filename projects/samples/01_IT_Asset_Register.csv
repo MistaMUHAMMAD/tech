@@ -1,0 +1,4 @@
+Device ID,Assigned user,Serial number,Department,Status,Purchase date,Warranty until,Maintenance status,Device type,Last checked,Location,Notes
+DEMO-IT-001,Demo user 01,DEMO-SERIAL-001,Operations,Assigned,2026-02-10,2027-02-10,Up to date,Laptop,2026-10-20,Demo office,Fictional sample
+DEMO-IT-002,Demo user 02,DEMO-SERIAL-002,Administration,Assigned,2025-06-05,2026-06-05,Check required,Desktop,2026-10-18,Demo office,Fictional sample
+DEMO-IT-003,,DEMO-SERIAL-003,IT support,Spare,2026-04-15,2027-04-15,Up to date,Laptop,2026-10-22,Demo storage,Unassigned spare device

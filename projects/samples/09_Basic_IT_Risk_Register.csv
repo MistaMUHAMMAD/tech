@@ -1,0 +1,4 @@
+Risk ID,Risk description,Asset / process,Cause,Potential effect,Existing control example,Likelihood (1-5),Impact (1-5),Sample score,Action,Owner,Status,Review date
+DEMO-RISK-001,Backup recovery is untested,Work records,No recent approved test,Recovery may fail,Scheduled backup jobs,3,4,12,Arrange approved isolated recovery test,Demo IT owner,Open,2026-11-24
+DEMO-RISK-002,Device handover record missing,Office devices,Incomplete record,Unclear device accountability,Asset register,2,3,6,Record handover and assigned user,Demo asset owner,Open,2026-11-24
+DEMO-RISK-003,Support instructions are outdated,User guidance,No review owner,Inconsistent support actions,Shared support guide,2,2,4,Assign review owner and update guide,Demo support owner,In progress,2026-11-24
