@@ -14,8 +14,10 @@ config=json.loads((ROOT/'site-config.json').read_text())
 if args.username:
  if not re.fullmatch(r'[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?',args.username) or '--' in args.username:
   p.error('Enter a valid GitHub username without @, spaces or a URL.')
- config['github_username']=args.username.lower()
- if not args.site_url: config['site_url']=f'https://{args.username.lower()}.github.io/'
+ previous_username=config.get('github_username','')
+ config['github_username']=args.username
+ if not args.site_url and (not config.get('site_url') or previous_username.lower()!=args.username.lower()):
+  config['site_url']=f'https://{args.username.lower()}.github.io/'
 if args.site_url:
  u=urlparse(args.site_url)
  if u.scheme!='https' or not u.netloc or u.query or u.fragment or u.username or u.password:
@@ -33,7 +35,7 @@ for f in ROOT.glob('*.html'):
   page=url if f.name=='index.html' else url+f.name
   metadata=f'<link rel="canonical" href="{html.escape(page,quote=True)}"><meta property="og:url" content="{html.escape(page,quote=True)}">'
   if f.name=='index.html':
-   person={'@context':'https://schema.org','@type':'Person','name':'Muhammad Musa','jobTitle':config['headline'],'url':url,'email':'mailto:muhammad.musa4rl@gmail.com','telephone':'+2348148057035','address':{'@type':'PostalAddress','addressLocality':'Abuja','addressCountry':'NG'},'sameAs':['https://www.linkedin.com/in/muhammadmusa']}
+   person={'@context':'https://schema.org','@type':'Person','name':'Muhammad Musa','jobTitle':config['headline'],'url':url,'email':'mailto:muhammad.musa4rl@gmail.com','telephone':'+2348148057035','address':{'@type':'PostalAddress','addressLocality':'Abuja','addressCountry':'NG'},'sameAs':['https://www.linkedin.com/in/muhammad-musa-0a37081aa/']}
    if username:person['sameAs'].append('https://github.com/'+username)
    metadata+='<script type="application/ld+json">'+json.dumps(person,separators=(',',':'))+'</script>'
   content=re.sub(r'<!-- DEPLOYMENT_META_START -->.*?<!-- DEPLOYMENT_META_END -->','<!-- DEPLOYMENT_META_START -->'+metadata+'<!-- DEPLOYMENT_META_END -->',content,flags=re.S)

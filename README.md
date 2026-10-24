@@ -14,30 +14,38 @@ A static professional portfolio covering workplace technology, systems support, 
 
 Real-work case studies, the TS Academy team training project and fictional samples are labelled separately. Two supplied training certificates are linked under `assets/documents/certificates/`. The team repository is maintained under Tonylinks; it is not presented as an individual repository or sole-authored project. The site does not imply a software-engineering, advanced cloud, cybersecurity-programme or formal IT-risk role.
 
-## Publish on GitHub Pages
+## Publish updates to your GitHub Pages site
 
-1. Sign in to your GitHub account and confirm your exact username. A suggested handle is `muhammadmusa-it`, subject to availability.
-2. Review your dates, titles and credentials against your records. The separate owner guide in the delivery package lists the items needing confirmation. Keep that guide outside the public repository.
-3. Unzip the delivery package. Open the `github-pages-site` folder. Upload the CONTENTS of that folder, so `index.html` is at the repository root. Do not upload the outer delivery folder or the ZIP as the site.
-4. If Python is available, run the configuration helper from inside this folder, replacing `YOUR-USERNAME` with your confirmed handle:
+This package is already configured for:
 
-   ```bash
-   python tools/configure.py --username YOUR-USERNAME
-   python tools/validate.py
-   ```
+| Setting | Value |
+|---|---|
+| GitHub username | MistaMUHAMMAD |
+| Repository | https://github.com/MistaMUHAMMAD/tech |
+| Portfolio URL | https://mistamuhammad.github.io/tech/ |
+| LinkedIn | https://www.linkedin.com/in/muhammad-musa-0a37081aa/ |
+| Phone | +234 814 805 7035 |
 
-   On Windows, `py` can replace `python`. This inserts the GitHub contact link, canonical URLs, absolute Open Graph image URLs, a sitemap, robots.txt and Person structured data. It is a one-time editing helper, not a hosting dependency.
-5. Create a repository named exactly `YOUR-USERNAME.github.io`, using your actual lowercase username. A public repository works with GitHub Free. If you initialise it with a README, replace that README with the supplied one when uploading.
-6. Upload all site files and subfolders, including `.nojekyll` and `favicon.ico`. Use the first commit message: `Build Muhammad Musa IT support and technical operations portfolio`.
-7. In the repository, open **Settings → Pages**. Under **Build and deployment**, select **Deploy from a branch**, choose **main** and **/(root)**, then **Save**.
-8. Open **Actions** and wait for the Pages deployment to finish successfully. Then visit `https://YOUR-USERNAME.github.io/` using the actual username.
-9. Test the three pages, CV download, sample ZIP, contact links and browser-tab icon on a desktop and a phone.
+Your `tech` repository is a project site. Keep its name as `tech` to retain the `/tech/` address.
 
-For an account site, the repository name must match the username plus `.github.io`. The included links are relative and also work when testing locally. No `CNAME` is included because no custom domain has been configured.
+1. Unzip the delivery package and open `github-pages-site`.
+2. Upload the CONTENTS of that folder to `MistaMUHAMMAD/tech`, replacing the existing site files. Keep `index.html` at the repository root. Do not upload the outer delivery folder, `owner-guide` or the ZIP as the site.
+3. Include `assets/`, `projects/`, `tools/`, the HTML/CSS/JavaScript files, favicon files, `site.webmanifest`, `site-config.json`, `sitemap.xml`, `robots.txt` and `.nojekyll`.
+4. Commit with a message such as `Update portfolio contact details and project-site metadata`.
+5. Keep **Settings → Pages → Deploy from a branch → main → /(root)**. There is no need to create a new repository or rename this one.
+6. Wait for **pages build and deployment** in Actions to finish successfully, then open https://mistamuhammad.github.io/tech/.
+7. Check the GitHub and LinkedIn links, the displayed international phone number and the CV download. Hard-refresh if the browser shows an older version.
 
-### Without Python
+The supplied files already contain the confirmed links and sharing metadata. Running Python is not required to upload or publish this update.
 
-Edit each HTML file's `DEPLOYMENT_META_START` comment block to add its canonical link and `og:url` with the final page URL. Change `og:image` and `twitter:image` to the absolute public URL of `assets/images/social-preview.png`. In `index.html`, replace the content between `GITHUB_CONTACT_START` and `GITHUB_CONTACT_END` with an anchor to your real GitHub profile. The site renders without Python; the helper simply avoids repetitive edits. Do not insert a made-up profile URL.
+For later reconfiguration, run from the website folder:
+
+```bash
+python tools/configure.py --username MistaMUHAMMAD --site-url https://mistamuhammad.github.io/tech/
+python tools/validate.py
+```
+
+On Windows, `py` can replace `python`. Internal page, asset and download links are relative, so they work under `/tech/`. Canonical links, Open Graph images, structured data and the sitemap use the full project-site URL. No `CNAME` is included because no custom domain has been configured.
 
 ## Preview locally
 
@@ -77,7 +85,7 @@ The Excel tables have 50 prepared data rows (rows 8–57). When extending them, 
 
 Search the HTML files and `script.js` for the old email, phone or LinkedIn URL and replace every occurrence. Update the structured-data values in `tools/configure.py` if you use the configuration helper later. Edit `site-config.json` for the configured username/site URL, then rerun the helper when those settings change.
 
-The phone link uses international digits (`tel:+2348148057035`) while the visible number uses the local format. Keep both consistent.
+The phone is displayed as `+234 814 805 7035`; its clickable link uses `tel:+2348148057035`. Keep the display and link consistent.
 
 ### Contact form
 
@@ -176,10 +184,12 @@ github-pages-site/
   projects/website-domain.md
   projects/workplace-support.md
   projects.html
+  robots.txt
   samples.html
   script.js
   site-config.json
   site.webmanifest
+  sitemap.xml
   styles.css
   tools/configure.py
   tools/validate.py
